@@ -9,8 +9,7 @@ public class Helicopter : Vehicle
     {
         if (GameManager.Instance.CurrentSelect == 2 && !IsDrown)
         {
-            if(NotUpsideDown())
-              Move();
+            Move();
         }
 
         _playerRb.AddForce(Vector3.down * _playerRb.drag * _gravityScale, ForceMode.Force);

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _hints;
     [SerializeField] private Camera[] _cameras;
     [SerializeField] private Vector3 _gravityScale;
-    [NonSerialized] public int CurrentSelect = 0;
+    public int CurrentSelect {get; private set;}
     public static GameManager Instance;
 
     private void Awake()
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _cameras[0].targetDisplay = 0;
+        CurrentSelect = 0;
     }
 
     private void Update()
