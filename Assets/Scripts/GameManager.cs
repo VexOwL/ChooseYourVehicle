@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _hints;
-    [SerializeField] private Camera[] _cameras;
+    [SerializeField] private GameObject[] _cameras;
     [SerializeField] private Vector3 _gravityScale;
     public int CurrentSelect {get; private set;}
     public static GameManager Instance;
@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _cameras[0].targetDisplay = 0;
+        _cameras[0].gameObject.SetActive(true);
+
         CurrentSelect = 0;
     }
 
@@ -54,24 +55,29 @@ public class GameManager : MonoBehaviour
     private void SelectCar()
     {
         CurrentSelect = 1;
-        _cameras[1].targetDisplay = 0;
+        
+        _cameras[1].gameObject.SetActive(true);
     }
 
     private void SelectHelicopter()
     {
         CurrentSelect = 2;
-        _cameras[2].targetDisplay = 0;
+        
+        _cameras[2].gameObject.SetActive(true);
     }
 
     private void SelectBoat()
     {
         CurrentSelect = 3;
-        _cameras[3].targetDisplay = 0;
+
+        _cameras[3].gameObject.SetActive(true);
     }
 
     private void ResetCameras()
     {
         foreach (var camera in _cameras)
-            camera.targetDisplay = 1;
+        {
+            camera.gameObject.SetActive(false);
+        }
     }
 }
